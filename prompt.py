@@ -1,0 +1,42 @@
+# Pre-requisite: Install langchain-core and langchain-openai packages
+# Pre-requisite: Create OpenAI API key and set it in the environment variable OPENAI_API_KEY
+
+# load the package for loading environment variables
+from dotenv import load_dotenv
+
+# load the package langchain core for PromptTemplate & ChatOpenAI
+from langchain_core.prompts import PromptTemplate
+from langchain_openai import ChatOpenAI
+from langchain.chains import LLMChain
+
+# Create user input variable for the prompt
+input_data = "What is the capital of France?"
+
+# Create the main function
+if __name__ == "__main__":
+    # load environment variables
+    load_dotenv()
+
+    # Create summary template for the prompt
+    summary_template = """
+    given the information: {information} about the person, I want you to create:
+    1. a short summary of the person
+    2. two interesting facts about the person
+    """
+
+    # Create PromptTemplate object with the summary template
+    prompt_template = PromptTemplate(
+        input_variable=["information"], template=summary_template
+    )
+
+    # Create LLM object with ChatOpenAI model like GPT-3-turbo or GPT-4
+    llm = ChatOpenAI(tempraure=0.5, model="gpt-3-turbo")
+
+    # Create a chain of PromptTemplate and LLM objects with the user input
+    chain = prompt_template | llm
+
+    # Invoke the chain with the user input
+    response = chain.invoke(input={"information": input_data})
+
+    # Print the response
+    print(response)
