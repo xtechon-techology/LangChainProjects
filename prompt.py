@@ -19,23 +19,23 @@ if __name__ == "__main__":
 
     # Create summary template for the prompt
     summary_template = """
-    given the information: {information} about the person, I want you to create:
-    1. a short summary of the person
-    2. two interesting facts about the person
+    Given the information: {information} about the person, I want you to create:
+    1. A short summary of the person
+    2. Two interesting facts about the person
     """
 
     # Create PromptTemplate object with the summary template
     prompt_template = PromptTemplate(
-        input_variable=["information"], template=summary_template
+        input_variables=["information"], template=summary_template
     )
 
-    # Create LLM object with ChatOpenAI model like GPT-3-turbo or GPT-4
-    llm = ChatOpenAI(tempraure=0.5, model="gpt-3-turbo")
+    # Create LLM object with ChatOpenAI model (use correct model name)
+    llm = ChatOpenAI(temperature=0.5, model="gpt-3.5-turbo")  # Corrected model name
 
     # Create a chain of PromptTemplate and LLM objects with the user input
-    chain = prompt_template | llm
+    chain = LLMChain(llm=llm, prompt=prompt_template)
 
-    # Invoke the chain with the user input
+    # Invoke the chain with the user input (removed temperature here)
     response = chain.invoke(input={"information": input_data})
 
     # Print the response
