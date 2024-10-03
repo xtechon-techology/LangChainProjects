@@ -53,6 +53,8 @@ pipenv install black
     * install package - pipenv install langchain-ollama
     * Create a new file - "ollama.py"
     * import the package - from langchain.ollama import OLLAMA
-    * Create a new object of OLLAMA - llm = ChatOllama(model="llama3")
+    * Create a new object of OLLAMA LLAMA3- llm = ChatOllama(model="llama3")
+    * Create a new object of OLLAMA mistral- llm = ChatOllama(model="mistral")
+    * Add output parser -chain = prompt_template | llm | StrOutputParser()
 
     
