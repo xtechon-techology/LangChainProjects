@@ -10,20 +10,20 @@ OLD_LOCAL_USER_EMAIL=$(git config user.email)
 
 # Set new Git username and email globally
 echo "Changing global Git username and email..."
-git config --global user.name "Devendra Kumar"
-git config --global user.email "devendra.kumar@xtechon.com"
+git config --global user.name "xtechon-techology"
+git config --global user.email "helpdesk@xtechon.com"
 
 # Set new Git username and email locally
 echo "Changing local Git username and email..."
-git config user.name "Devendra Kumar"
-git config user.email "devendra.kumar@xtechon.com"
+git config user.name "xtechon-techology"
+git config user.email "helpdesk@xtechon.com"
 
 # Add all changes to the staging area and commit
 echo "Staging changes..."
 git add .
 
 echo "Committing changes..."
-git commit -m "Updated with new username and email."
+git commit -m "Ollama with LLama 3"
 
 # Revert to the previous global Git username and email
 echo "Reverting global Git username and email..."
