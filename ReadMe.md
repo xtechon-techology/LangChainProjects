@@ -48,4 +48,11 @@ pipenv install black
         * Create a chain of PromptTemplate and LLM objects with the user input
         * Invoke the chain with the user input
 ![Basic-langchain-promt_01.png](resources/Basic-langchain-promt_01.png)
+
+## 4 First application using OLLAMA
+    * install package - pipenv install langchain-ollama
+    * Create a new file - "ollama.py"
+    * import the package - from langchain.ollama import OLLAMA
+    * Create a new object of OLLAMA - llm = ChatOllama(model="llama3")
+
     
