@@ -28,6 +28,9 @@ git commit -m "Ollama with LLama 3"
 echo "Pushing changes..."
 git push
 
+echo "Pull the changes..."
+git pull
+
 # Revert to the previous global Git username and email
 echo "Reverting global Git username and email..."
 git config --global user.name "$OLD_GLOBAL_USER_NAME"
