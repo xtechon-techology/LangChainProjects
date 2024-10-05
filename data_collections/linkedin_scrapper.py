@@ -3,6 +3,7 @@ import json
 from dotenv import load_dotenv
 import os
 
+
 # Create a function
 #   Parameters: LinkedIn company url
 #   Steps:

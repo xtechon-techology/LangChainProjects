@@ -8,16 +8,16 @@
 
 # Create the main function
 
-    # load environment variables
+# load environment variables
 
-    # Create summary template for the prompt
+# Create summary template for the prompt
 
-    # Create PromptTemplate object with the summary template
+# Create PromptTemplate object with the summary template
 
-    # Create LLM object with ChatOpenAI model like GPT-3-turbo or GPT-4
+# Create LLM object with ChatOpenAI model like GPT-3-turbo or GPT-4
 
-    # Create a chain of PromptTemplate and LLM objects with the user input
+# Create a chain of PromptTemplate and LLM objects with the user input
 
-    # Invoke the chain with the user input
+# Invoke the chain with the user input
 
-    # Print the response
+# Print the response
