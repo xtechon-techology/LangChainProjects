@@ -20,13 +20,13 @@ OLD_LOCAL_USER_EMAIL=$(git config user.email)
 
 # Set new Git username and email globally
 echo "Changing global Git username and email..."
-git config --global user.name "New Global User"
-git config --global user.email "newglobal@example.com"
+git config --global user.name "xtechon-techology"
+git config --global user.email "helpdesk@xtechon.com"
 
 # Set new Git username and email locally
 echo "Changing local Git username and email..."
-git config user.name "New Local User"
-git config user.email "newlocal@example.com"
+git config user.name "xtechon-techology"
+git config user.email "helpdesk@xtechon.com"
 
 # Add all changes to the staging area and commit with the provided message
 echo "Staging changes..."
@@ -37,7 +37,11 @@ git commit -m "$COMMIT_MESSAGE"
 
 # Push the commit to the remote repository
 echo "Pushing the commit to the remote repository..."
-git push
+git push --force
+
+echo "Pull the changes..."
+git pull
+
 
 # Revert to the previous global Git username and email
 echo "Reverting global Git username and email..."
