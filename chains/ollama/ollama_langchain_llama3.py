@@ -31,7 +31,6 @@ if __name__ == "__main__":
     )
 
     # Create LLM object with ChatOpenAI model (use correct model name)
-    # llm = ChatOpenAI(temperature=0.5, model="gpt-3.5-turbo")  # Corrected model name
     llm = ChatOllama(model="llama3")
 
     # Create a chain of PromptTemplate and LLM objects with the user input
