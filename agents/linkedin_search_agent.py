@@ -45,4 +45,4 @@ def search_profile(query: str) -> str:
 
 
 if __name__ == "__main__":
-    profile_url = search_profile("Vishal Dixit Computer Scientist Adobe Noida")
+    profile_url = search_profile("DoWhileLearn linkedin")
