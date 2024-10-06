@@ -2,6 +2,8 @@
 import sys
 from dotenv import load_dotenv
 
+from tools.tools import get_profile_url_tavily
+
 load_dotenv()
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
@@ -11,12 +13,6 @@ from langchain.agents import (
     AgentExecutor
 )
 from langchain import hub
-from langchain_community.tools.tavily_search import TavilySearchResults
-
-def get_profile_url_tavily(query: str):
-    search = TavilySearchResults()
-    result = search.run(f"{query}")
-    return result
 
 def search_profile(query: str) -> str:
     llm = ChatOpenAI(temperature=0,  model="gpt-4o-mini")
@@ -49,4 +45,4 @@ def search_profile(query: str) -> str:
 
 
 if __name__ == "__main__":
-    profile_url = search_profile("Devendra data expert")
+    profile_url = search_profile("Vishal Dixit Computer Scientist Adobe Noida")

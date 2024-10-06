@@ -11,6 +11,8 @@ langchainhub = "*"
 black = "*"
 python-dotenv = "*"
 langchain-ollama = "*"
+setuptools = "*"
+langchainprojects = {path = "."}
 
 [dev-packages]
 
