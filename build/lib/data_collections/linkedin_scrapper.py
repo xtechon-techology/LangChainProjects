@@ -56,7 +56,8 @@ def get_linkedin_company_data(linkedin_url):
 # Main function
 if __name__ == "__main__":
     #     10. Print the data
-    linkedin_url = "https://www.linkedin.com/company/data-intelligence-llc/"
+    linkedin_url = "https://www.linkedin.com/showcase/dwlofficial/"
+
     # company_name = linkedin_url.split("/")[-2]
     # print(f"Company Name: {company_name}")
     data = get_linkedin_company_data(linkedin_url)

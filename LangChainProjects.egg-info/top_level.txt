@@ -1,5 +1,7 @@
 agents
 basic
 chains
+configs
 data_collections
+fast_api_rest_server
 tools

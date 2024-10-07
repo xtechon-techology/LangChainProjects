@@ -13,6 +13,8 @@ python-dotenv = "*"
 langchain-ollama = "*"
 setuptools = "*"
 langchainprojects = {path = "."}
+fastapi = "*"
+uvicorn = "*"
 
 [dev-packages]
 

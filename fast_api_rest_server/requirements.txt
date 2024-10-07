@@ -1,0 +1,7 @@
+fastapi[standard]
+uvicorn
+sqlglot
+numpy
+pandas
+requests
+openpyxl
