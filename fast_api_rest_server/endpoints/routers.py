@@ -1,26 +1,22 @@
 from fastapi import APIRouter, HTTPException
 from typing import Union
+from schemas.parsers import Summary
+from chains.expert_role.linkedin_profile_summarizer_with_parser_for_app import linkedin_summarizer
 
 
 router = APIRouter()
 
 
-@router.post("/", response_model=Union[SQLParser, ErrorResponse])
-def sqlparser(sqlInput: SQLParserInput):
-    print(f"parser request: {sqlInput}")
+@router.post("/", response_model=Summary)
+def sqlparser(query: str) -> Union[Summary, HTTPException]:
     try:
+        results: Summary = linkedin_summarizer(query=query)
 
-
-        # response = {
-        #     "query": f"{query}",
-        #     "dq_dimensions": dq_dimensions,
-        #     "dq_measures":  dq_measures,
-        #     "rule_function" : rule_function,
-        #     "rule_measure" : rule_measure,
-        #     "rule_condition" : rule_condition,
-        #     "rule_threshold" : rule_threshold
-        # }
-
+        response = Summary(
+            summary=results[0].get("summary"),
+            facts=results[0].get("facts")
+        )
         return response
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+

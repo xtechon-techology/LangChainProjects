@@ -11,6 +11,8 @@ chains/__init__.py
 chains/expert_role/__init__.py
 chains/expert_role/business_development_role.py
 chains/expert_role/linkedin_profile_summarizer.py
+chains/expert_role/linkedin_profile_summarizer_with_parser.py
+chains/expert_role/linkedin_profile_summarizer_with_parser_for_app.py
 chains/ollama/__init__.py
 chains/ollama/ollama_langchain_llama3.py
 chains/ollama/ollama_langchain_mistral.py
@@ -30,8 +32,10 @@ fast_api_rest_server/endpoints/__init__.py
 fast_api_rest_server/endpoints/routers.py
 fast_api_rest_server/models/__init__.py
 fast_api_rest_server/models/dbmodel.py
-fast_api_rest_server/schemas/__init__.py
-fast_api_rest_server/schemas/poll.py
 fast_api_rest_server/services/__init__.py
+schemas/__init__.py
+schemas/parsers.py
+streamlit_app/__init__.py
+streamlit_app/linkedin_search_summary_app.py
 tools/__init__.py
 tools/tools.py

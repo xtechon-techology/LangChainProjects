@@ -4,4 +4,6 @@ chains
 configs
 data_collections
 fast_api_rest_server
+schemas
+streamlit_app
 tools
