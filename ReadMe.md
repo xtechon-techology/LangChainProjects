@@ -57,4 +57,11 @@ pipenv install black
     * Create a new object of OLLAMA mistral- llm = ChatOllama(model="mistral")
     * Add output parser -chain = prompt_template | llm | StrOutputParser()
 
+
+
+## Steps to run this repos
+    * Clone the repos
+    * Install the packages - pipenv install
+    * Run the file - python IceBreaker.py
+    * Run the file - python prompt
     
