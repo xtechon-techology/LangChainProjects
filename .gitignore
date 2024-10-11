@@ -1,5 +1,9 @@
+LangChainProjects.egg-info/
+build/
 .env/
 .venv/
 /.1
 /.env
 /.venv/
+/build/
+/LangChainProjects.egg-info/
