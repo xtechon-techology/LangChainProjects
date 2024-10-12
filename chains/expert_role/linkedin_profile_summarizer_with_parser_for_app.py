@@ -2,8 +2,10 @@ from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain.chains import LLMChain
-from schemas.parsers import summary_parser, Summary
+from schemas.parsers import Summary, summary_parser
 from typing import Tuple
+
+
 # enable logging
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -49,11 +51,12 @@ def linkedin_summarizer(query: str) -> Tuple[Summary, str]:
 
     return res, linkedin_data.get("company")
 
+
 # Create the main function
 if __name__ == "__main__":
     load_dotenv()
 
     print("linkedin_summarizer")
-    linkedin_summarizer(query="chetu noida linkedin")
+    linkedin_summarizer(query="data-intelligence-llc")
 
 
