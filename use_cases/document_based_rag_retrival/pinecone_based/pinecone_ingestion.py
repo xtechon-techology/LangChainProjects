@@ -9,7 +9,7 @@ load_dotenv()
 
 if __name__ == "__main__":
     print("Ingesting...")
-    loader = TextLoader("use_cases/document_based_rag_retrival/files/mediumblog1.txt")
+    loader = TextLoader("use_cases/document_based_rag_retrival/pinecone_based/files/mediumblog1.txt")
     document = loader.load()
 
     print("splitting...")
