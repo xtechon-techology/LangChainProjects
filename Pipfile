@@ -16,10 +16,9 @@ python-dotenv = "*"
 langchain-ollama = "*"
 setuptools = "*"
 langchainprojects = {path = "."}
-
+langchain-pinecone = "*"
 streamlit = "*"
 requests = "*"
-
 
 [dev-packages]
 
