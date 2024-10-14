@@ -18,9 +18,11 @@ setuptools = "*"
 langchainprojects = {path = "."}
 langchain-pinecone = "*"
 streamlit = "*"
+streamlit-chat = "*"
 requests = "*"
 faiss-cpu = "*"
 pypdf = "*"
+beautifulsoup4 = "*"
 
 [dev-packages]
 
