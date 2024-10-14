@@ -19,6 +19,8 @@ langchainprojects = {path = "."}
 langchain-pinecone = "*"
 streamlit = "*"
 requests = "*"
+faiss-cpu = "*"
+pypdf = "*"
 
 [dev-packages]
 

@@ -28,10 +28,13 @@ echo "Changing local Git username and email..."
 git config user.name "xtechon-technology"
 git config user.email "helpdesk@xtechon.com"
 
-# Add only tracked files to the staging area (avoiding files in .gitignore)
+# Remove previously tracked files that are now ignored by .gitignore
+echo "Removing ignored files from Git tracking..."
+git rm -r --cached .venv .env build LangChainProjects.egg-info
+
+# Add only tracked files to the staging area (excluding files in .gitignore)
 echo "Staging changes (excluding files in .gitignore)..."
-git add -u  # Stages only modified and deleted files
-git add .   # Adds new files not listed in .gitignore
+git add -u  # Stages modified and deleted files only
 
 # Check for staged changes
 if git diff --cached --quiet; then
