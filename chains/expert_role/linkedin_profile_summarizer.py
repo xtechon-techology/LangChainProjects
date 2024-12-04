@@ -29,11 +29,10 @@ def linkedin_summarizer(query: str) -> str:
 
     print(res)
 
+
 # Create the main function
 if __name__ == "__main__":
     load_dotenv()
 
     print("linkedin_summarizer")
     linkedin_summarizer(query="chetu noida linkedin")
-
-

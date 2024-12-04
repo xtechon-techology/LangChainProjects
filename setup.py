@@ -1,4 +1,3 @@
-
 import os
 from setuptools import setup, find_packages
 
@@ -11,5 +10,5 @@ setup(
     version="1.0.0",
     description="All possible LangChain projects",
     packages=find_packages(),
-    include_package_data=True
+    include_package_data=True,
 )

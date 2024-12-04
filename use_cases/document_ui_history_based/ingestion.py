@@ -9,8 +9,12 @@ from consts import INDEX_NAME
 
 load_dotenv()
 
-def ingest_docs() -> None:
-    loader = ReadTheDocsLoader(path="use_cases/document_ui_history_based/langchain-docs/api.python.langchain.com/en/latest")
+
+def ingest_docs(document_path: str) -> None:
+    # ="use_cases/document_ui_history_based/langchain-docs/api.python.langchain.com/en/latest"
+    loader = ReadTheDocsLoader(
+        path=document_path
+    )
     raw_documents = loader.load()
     print(f"loaded {len(raw_documents) }documents")
     text_splitter = RecursiveCharacterTextSplitter(
@@ -26,11 +30,9 @@ def ingest_docs() -> None:
 
     print(f"Going to insert {len(documents)} to Pinecone")
     embeddings = OpenAIEmbeddings()
-    PineconeVectorStore.from_documents(
-        documents, embeddings, index_name=INDEX_NAME
-    )
+    PineconeVectorStore.from_documents(documents, embeddings, index_name=INDEX_NAME)
     print("****** Added to Pinecone vectorstore vectors")
 
 
 if __name__ == "__main__":
-    ingest_docs()
+    ingest_docs("use_cases/document_ui_history_based/langchain-docs/api.python.langchain.com/en/latest")

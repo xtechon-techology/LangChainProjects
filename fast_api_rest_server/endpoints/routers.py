@@ -1,7 +1,9 @@
 from fastapi import APIRouter, HTTPException
 from typing import Union
 from schemas.parsers import Summary
-from chains.expert_role.linkedin_profile_summarizer_with_parser_for_app import linkedin_summarizer
+from chains.expert_role.linkedin_profile_summarizer_with_parser_for_app import (
+    linkedin_summarizer,
+)
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 
@@ -15,8 +17,7 @@ def sqlparser(query: str) -> Union[Summary, HTTPException]:
         results: Summary = linkedin_summarizer(query=query)
 
         response = Summary(
-            summary=results[0].get("summary"),
-            facts=results[0].get("facts")
+            summary=results[0].get("summary"), facts=results[0].get("facts")
         )
         # # return response
         # # return JSONResponse(content=jsonable_encoder(response))
@@ -28,4 +29,3 @@ def sqlparser(query: str) -> Union[Summary, HTTPException]:
 
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
-

@@ -1,4 +1,3 @@
-
 import sys
 from dotenv import load_dotenv
 
@@ -8,14 +7,12 @@ load_dotenv()
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain_core.tools import Tool
-from langchain.agents import (
-    create_react_agent,
-    AgentExecutor
-)
+from langchain.agents import create_react_agent, AgentExecutor
 from langchain import hub
 
+
 def search_profile(query: str) -> str:
-    llm = ChatOpenAI(temperature=0,  model="gpt-4o-mini")
+    llm = ChatOpenAI(temperature=0, model="gpt-4o-mini")
 
     template = """ given the full name {name_of_person} I want you to get it me a link to their Linkedin profile page.
     Your answer should contain only a URL."""
@@ -28,7 +25,7 @@ def search_profile(query: str) -> str:
         Tool(
             name="search_profile",
             func=get_profile_url_tavily,
-            description="Search for a person's profile on Linkedin"
+            description="Search for a person's profile on Linkedin",
         )
     ]
 

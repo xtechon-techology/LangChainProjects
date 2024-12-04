@@ -1,0 +1,11 @@
+streamlit
+langchain
+openai
+pandas
+pymysql
+langchain_experimental
+tabulate
+cryptography
+matplotlib
+seaborn
+langchain-community

@@ -2,10 +2,16 @@ import streamlit as st
 import requests
 
 # Add Linkedin icon to the title
-st.set_page_config(page_title="Linkedin Profile Summary App", page_icon="/Users/vishald/Documents/DWL/langchain/LangChainProjects/resources/linkedin-icon-v2.png")
+st.set_page_config(
+    page_title="Linkedin Profile Summary App",
+    page_icon="/Users/vishald/Documents/DWL/langchain/LangChainProjects/resources/linkedin-icon-v2.png",
+)
 
 # Add a title with Linkedin icon
-st.image("/Users/vishald/Documents/DWL/langchain/LangChainProjects/resources/linkedin-icon-v2.png", width=50)
+st.image(
+    "/Users/vishald/Documents/DWL/langchain/LangChainProjects/resources/linkedin-icon-v2.png",
+    width=50,
+)
 
 st.title(" Linkedin Profile Summary App")
 
@@ -21,11 +27,15 @@ def generate_response(input_text):
 
 
 with st.form("my_form"):
-    text = st.text_area("Enter text:", "What are 3 key advice for learning how to code?")
+    text = st.text_area(
+        "Enter text:", "What are 3 key advice for learning how to code?"
+    )
     submitted = st.form_submit_button("Submit")
 
     # send rest api request to the fastapi server
-    request = requests.post("http://localhost:8000/marketing_server", json={"text": text})
+    request = requests.post(
+        "http://localhost:8000/marketing_server", json={"text": text}
+    )
 
     if not openai_api_key:
         st.info("Please add your OpenAI API key to continue.")

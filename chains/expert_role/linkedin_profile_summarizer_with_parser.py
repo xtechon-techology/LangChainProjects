@@ -11,7 +11,9 @@ from agents.linkedin_search_agent import search_profile
 def linkedin_summarizer(query: str) -> str:
     linkedin_profile_url = search_profile(query=query)
     print(f"Linkedin Profile URL: {linkedin_profile_url}")
-    linkedin_data = get_linkedin_company_data(linkedin_url=linkedin_profile_url, mock=True)
+    linkedin_data = get_linkedin_company_data(
+        linkedin_url=linkedin_profile_url, mock=True
+    )
 
     summary_template = """
     given the Linkedin information {information} about a person I want you to create:
@@ -21,8 +23,11 @@ def linkedin_summarizer(query: str) -> str:
     \n{format_instructions}
     """
     summary_prompt_template = PromptTemplate(
-        input_variables=["information"], template=summary_template,
-        partial_variables={"format_instructions": summary_parser.get_format_instructions()}
+        input_variables=["information"],
+        template=summary_template,
+        partial_variables={
+            "format_instructions": summary_parser.get_format_instructions()
+        },
     )
 
     llm = ChatOpenAI(temperature=0, model_name="gpt-4o-mini")
@@ -34,11 +39,10 @@ def linkedin_summarizer(query: str) -> str:
 
     print(res)
 
+
 # Create the main function
 if __name__ == "__main__":
     load_dotenv()
 
     print("linkedin_summarizer")
     linkedin_summarizer(query="chetu noida linkedin")
-
-

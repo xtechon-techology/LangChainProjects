@@ -24,7 +24,10 @@ def get_linkedin_company_data(linkedin_url, mock=False):
     key = os.environ["SCRAPIN_API_KEY"]
 
     if mock:
-        with open(f"/Users/vishald/Documents/DWL/langchain/LangChainProjects/data-intelligence-llc.json", "r") as file:
+        with open(
+            f"/Users/vishald/Documents/DWL/langchain/LangChainProjects/data-intelligence-llc.json",
+            "r",
+        ) as file:
             data = json.load(file)
             return data
     else:

@@ -9,9 +9,9 @@ st.header("LangChain Udemy Course - Documentation Helper Bot")
 prompt = st.text_input("Prompt", placeholder="Enter your prompt here..")
 
 if (
-        "chat_answers_history" not in st.session_state
-        and "user_prompt_history" not in st.session_state
-        and "chat_history" not in st.session_state
+    "chat_answers_history" not in st.session_state
+    and "user_prompt_history" not in st.session_state
+    and "chat_history" not in st.session_state
 ):
     st.session_state["chat_answers_history"] = []
     st.session_state["user_prompt_history"] = []
@@ -39,7 +39,10 @@ if prompt:
         # Check if 'context' exists and process the sources
         if "context" in generated_response:
             sources = set(
-                [doc.metadata.get("source", "No source available") for doc in generated_response["context"]]
+                [
+                    doc.metadata.get("source", "No source available")
+                    for doc in generated_response["context"]
+                ]
             )
         else:
             sources = set()
@@ -49,18 +52,22 @@ if prompt:
             sources_str = create_sources_string(sources)
             formatted_response = f"{generated_response['answer']} \n\n{sources_str}"
         else:
-            formatted_response = f"No answer found. \n\n{create_sources_string(sources)}"
+            formatted_response = (
+                f"No answer found. \n\n{create_sources_string(sources)}"
+            )
 
         # Update session state for chat history
         st.session_state["user_prompt_history"].append(prompt)
         st.session_state["chat_answers_history"].append(formatted_response)
         st.session_state["chat_history"].append(("human", prompt))
-        st.session_state["chat_history"].append(("ai", generated_response.get("answer", "No answer available")))
+        st.session_state["chat_history"].append(
+            ("ai", generated_response.get("answer", "No answer available"))
+        )
 
 if st.session_state["chat_answers_history"]:
     for generated_response, user_query in zip(
-            st.session_state["chat_answers_history"],
-            st.session_state["user_prompt_history"],
+        st.session_state["chat_answers_history"],
+        st.session_state["user_prompt_history"],
     ):
         message(user_query, is_user=True)
         message(generated_response)
