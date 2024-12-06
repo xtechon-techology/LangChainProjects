@@ -1,5 +1,5 @@
 from dotenv import load_dotenv
-from langchain_community.document_loaders import PyPDFLoader
+from langchain.document_loaders import PyPDFLoader
 from langchain_text_splitters import CharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings, OpenAI
 from langchain_community.vectorstores import FAISS
@@ -9,10 +9,8 @@ from langchain import hub
 
 load_dotenv()
 
-
-if __name__ == "__main__":
-    print("hi")
-    pdf_path = "use_cases/document_based_rag_retrival/faiss_based/resources/react.pdf"
+def pdf_embeddings_faiss(pdf_path:str):
+    # pdf_path = "use_cases/document_based_rag_retrival/faiss_based/resources/react.pdf"
     loader = PyPDFLoader(file_path=pdf_path)
     documents = loader.load()
     text_splitter = CharacterTextSplitter(
@@ -23,6 +21,13 @@ if __name__ == "__main__":
     embeddings = OpenAIEmbeddings()
     vectorstore = FAISS.from_documents(docs, embeddings)
     vectorstore.save_local("faiss_index_react")
+
+    return embeddings
+
+
+
+
+def chat_with_pdf(embeddings: OpenAIEmbeddings, question:str):
 
     new_vectorstore = FAISS.load_local(
         "faiss_index_react", embeddings, allow_dangerous_deserialization=True
@@ -36,5 +41,17 @@ if __name__ == "__main__":
         new_vectorstore.as_retriever(), combine_docs_chain
     )
 
-    res = retrieval_chain.invoke({"input": "Give me the gist of ReAct in 3 sentences"})
+    res = retrieval_chain.invoke({"input": question})
     print(res["answer"])
+    return res
+
+
+if __name__ == "__main__":
+    print("hi")
+    pdf_path = "use_cases/document_based_rag_retrival/faiss_based/resources/react.pdf"
+    embeddings = pdf_embeddings_faiss(pdf_path)
+    question = "What is React?"
+    result = chat_with_pdf(embeddings, question)
+    print(result)
+
+

@@ -27,7 +27,7 @@ if submitted:
     if not query:
         st.warning("Please enter a valid query to proceed.")
     else:
-        st.info("Fetching LinkedIn data and generating the summary...")
+        st.info(f"Fetching LinkedIn data and generating the summary...for {query}")
 
         # Generate summary
         try:

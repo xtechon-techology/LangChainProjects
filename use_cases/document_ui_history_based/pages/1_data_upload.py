@@ -1,4 +1,7 @@
 import streamlit as st
+
+from use_cases.document_based_rag_retrival.faiss_based.faiss_question_answer_with_research_paper_executor import \
+    pdf_embeddings_faiss, chat_with_pdf
 from use_cases.document_ui_history_based.ingestion import ingest_docs
 
 # Configure the Streamlit page
@@ -16,13 +19,26 @@ st.markdown(
     Upload a file or provide a directory path to process and analyze your documents.
     """
 )
-
-# File uploader
 uploaded_file = st.file_uploader(
     "Upload a single file (.txt or .pdf):",
     type=["txt", "pdf"],
     label_visibility="visible",
 )
+if st.button("Submit Txt/PDF File") and uploaded_file:
+    with open(uploaded_file.name, "wb") as f:
+        f.write(uploaded_file.getbuffer())
+    try:
+        embeddings = pdf_embeddings_faiss(uploaded_file.name)
+        st.session_state["pdf_embeddings"] = embeddings
+        st.success(f"File `{uploaded_file.name}` processed successfully! ✅")
+    except Exception as e:
+        st.error(f"Failed to process the file. Error: {e}")
+
+
+
+# ------------
+
+
 
 # Directory path input
 st.markdown("---")
@@ -41,20 +57,21 @@ if st.button("Submit Directory Path"):
             progress_bar.progress(progress)
 
         progress_bar.progress(100)
-        st.success("Document ingestion completed! ✅")
+        st.success(f"File `{directory_path_provided}` processed successfully! ✅")
+
     else:
         st.error("Please enter a valid directory path.")
 
 # Process Uploaded File
-if uploaded_file:
-    st.markdown("---")
-    st.subheader("Processing Uploaded File")
-    file_path = uploaded_file.name
-
-    with st.spinner(f"Processing `{file_path}`..."):
-        ingest_docs(document_path=file_path)
-
-    st.success(f"File `{file_path}` processed successfully! ✅")
+# if uploaded_file:
+#     st.markdown("---")
+#     st.subheader("Processing Uploaded File")
+#     file_path = uploaded_file.name
+#
+#     with st.spinner(f"Processing `{file_path}`..."):
+#         ingest_docs(document_path=file_path)
+#
+#     st.success(f"File `{file_path}` processed successfully! ✅")
 
 # Footer
 st.markdown("---")
